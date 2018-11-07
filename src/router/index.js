@@ -24,6 +24,11 @@ export default new Router({
       },
       children:[
         {
+          path:"",
+          name:"user",
+          component:user
+        },
+        {
           path:'user',
           name:"user",
           component:user

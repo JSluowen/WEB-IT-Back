@@ -17,7 +17,7 @@ import UserReview from "./UserReview.vue";
 export default {
   data() {
     return {
-      activeName: "second"
+      activeName: "first"
     };
   },
   methods: {
