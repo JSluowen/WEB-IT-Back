@@ -5,7 +5,7 @@
         <el-table-column label="姓名" prop="username">
         </el-table-column>
         <el-table-column label="邮箱" prop="email">
-        </el-table-column>
+        </el-table-column>       
         <el-table-column align="right">
           <template slot="header" slot-scope="slot">
             <el-input v-model="search" size="mini" placeholder="搜索成员" />
@@ -38,12 +38,14 @@ export default {
     //加载用户信息
     userLoading() {
       this.$api.user.userLoading().then(res => {
-         var user = res.data;
-         console.log(user);
+        var user = res.data;
+        this.tableData = user.filter(item => {
+          if (item.identity != 1 && item.status != 0) {
+            return item;
+          }
+        });
       });
     },
-    //设置成管理员
-    handleEdit(index, row) {},
     //删除用户
     handleDelete(index, row) {
       var username = row.username;
@@ -62,7 +64,7 @@ export default {
                 type: "success",
                 message: data.message
               });
-              this.userLoading()
+              this.userLoading();
             })
             .catch(erro => {
               this.$message({

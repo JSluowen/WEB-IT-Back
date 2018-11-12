@@ -2,7 +2,8 @@
 const base ={
     login:"/user/login",
     userLoading:'/user/userloading',
-    userDelete:"/user/userdelete"
+    userDelete:"/user/userdelete",
+    userPass:'/user/userpass'
 }
 
 export default base

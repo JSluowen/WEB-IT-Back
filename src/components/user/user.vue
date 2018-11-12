@@ -1,14 +1,14 @@
 <template>
-    <div class="user">
-        <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
-            <el-tab-pane label="用户管理" name="first">
-                <user-mangment />
-            </el-tab-pane>
-            <el-tab-pane label="待审核成员" name="second">
-                <user-review />
-            </el-tab-pane>
-        </el-tabs>
-    </div>
+  <div class="user">
+    <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
+      <el-tab-pane label="用户管理" name="first">
+        <user-mangment ref="mangment" />
+      </el-tab-pane>
+      <el-tab-pane label="待审核成员" name="second">
+        <user-review ref="review" />
+      </el-tab-pane>
+    </el-tabs>
+  </div>
 </template>
 
 <script>
@@ -22,7 +22,11 @@ export default {
   },
   methods: {
     handleClick(tab, event) {
-      console.log(tab.index);
+      if (tab.index == 0) {
+        this.$refs.mangment.userLoading();
+      } else if (tab.index == 1) {
+        this.$refs.review.userLoading();
+      }
     }
   },
   components: {

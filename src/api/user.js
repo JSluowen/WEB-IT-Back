@@ -22,13 +22,21 @@ const user = {
             })
         })
     },
-    userDelete(params){
-        
+    userDelete(params){       
         return new Promise((resolve,reject)=>{
             axios.get(`${base.userDelete}`,{params}).then((res)=>{
                 resolve(res.data)
             }).catch((err)=>{
                 reject(err.data)
+            })
+        })
+    },
+    userPass(params){
+        return new Promise((resolve,reject)=>{
+            axios.get(`${base.userPass}`,{params}).then((res)=>{
+                resolve(res.data)
+            }).catch((error)=>{
+                reject(error)
             })
         })
     }

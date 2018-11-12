@@ -13,7 +13,7 @@
           <span class="name">{{name}}</span>
         </div>
         <div class="logout">
-          <el-button type="danger" plain>注销</el-button>
+          <el-button type="danger" plain @click="logout">退出</el-button>
         </div>
       </div>
     </div>
@@ -61,6 +61,30 @@ export default {
   methods: {
     MenuItem(index) {
       this.$router.push({ path: this.routerlink[index - 1] });
+    },
+    //注销
+    logout() {
+      this.$confirm("是否确认退出?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          sessionStorage.removeItem('token')
+          this.$router.push({
+            path:"/login"
+          })
+          this.$message({
+            type: "success",
+            message: "退出成功,返回登录界面!"
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "退出取消"
+          });
+        });
     }
   }
 };
@@ -87,7 +111,7 @@ export default {
     display: flex;
     justify-content: space-between;
     .img {
-      width:400px;
+      width: 400px;
       height: 100%;
       overflow: hidden;
       display: flex;
