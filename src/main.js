@@ -17,7 +17,7 @@ Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
   var token = sessionStorage.getItem("token")
-  if (to.meta.requiresAuth) {
+  if (to.matched[0].meta.requiresAuth) {
     if (token) {
       next()
     } else {
@@ -27,6 +27,7 @@ router.beforeEach((to, from, next) => {
           redirect: to.fullPath
         }
       })
+      next()
     }
   } else {
     next();

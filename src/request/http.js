@@ -12,33 +12,6 @@ axios.defaults.timeOut = 10000
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
 export default axios
-//封装get请求
-// export function get(url,params){
-//   return new Promise((resolve,reject)=>{
-//       axios.get(url,{
-//           params:params
-//       }).then(res=>{
-//           resolve(res.data)
-//           console.log(res)
-//       }).catch(err=>{
-//           reject(err.data)
-//       })
-//   })
-// }
-
-// // 封装post请求
-// export function post(url,parmas){
-//   return new Promise((resolve,reject)=>{
-//       axios.post(url,qs.stringify(parmas))
-//       .then(res=>{
-//           resolve(res.data)
-//       })
-//       .catch(err=>{
-//           reject(err.data)
-//       })
-//   })
-// }
-
 
 
 // import store from '@/store/index';请求拦截器

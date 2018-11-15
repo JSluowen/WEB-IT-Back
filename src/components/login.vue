@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import md5 from 'js-md5'
 export default {
   data() {
     return {
@@ -47,10 +48,11 @@ export default {
             });
             return;
           }
+          var pass = md5(this.ruleForm.password)
           this.$api.user
             .login({
-              username: this.ruleForm.username.toString(),
-              password: this.ruleForm.password.toString()
+              username: this.ruleForm.username,
+              password: pass
             })
             .then(res => {
               if (!res.have) {
